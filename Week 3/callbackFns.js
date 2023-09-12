@@ -80,3 +80,18 @@ const calcTotal = (subT, tip, callback, taxRate = 0.07) => {
 }
 
 calcTotal(34.95, 10.50, costTable);
+
+// Callback Challenge
+
+const middlePos = (str, middleFn) => {
+    let len = str.length;
+    let mid = Math.floor(len / 2);
+    middleFn(str, mid);
+}
+
+const middleChar = (str, pos) => {
+    let char = `<p>${str[pos]}</p>`;
+    document.write(char);
+}
+
+middlePos("hello hi what's up", middleChar);
