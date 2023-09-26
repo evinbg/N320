@@ -1,0 +1,43 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+}
+
+h2 {
+    margin-bottom: 5px;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 880px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.bubble {
+    background-color: lightgray;
+    width: 420px;
+    height: auto;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.quote {
+    width: 95%;
+    height: auto;
+    margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.name {
+    float: right;
+    width: auto;
+    margin: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
