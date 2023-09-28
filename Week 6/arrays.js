@@ -126,4 +126,65 @@ function vtIndex(arr) {
 console.log("Value * Index: ", vtIndex([2, 5, 9,]));
 
 /* Reduce */
+// 2 parts: callback, initialValue
+// callback: accumulator, nextValue
 
+let reduceArr = [1, 2, 3, 4, 5];
+
+let reduceFn = reduceArr.reduce(function(accumulator, nextValue) {
+    return accumulator + nextValue;
+}, 10);
+
+console.log("Reduce Function 1: ", reduceFn);
+
+let reduceFn2 = reduceArr.reduce(function(accumulator, nextValue) {
+    return accumulator + nextValue;
+});
+
+console.log("Reduce Function 2: ", reduceFn2);
+
+let family = ['William', 'Abigail', 'Richie', 'Ben', 'Gabe', 'Mike'];
+// Output: My family members are William Abigail Richie
+
+let nameFunction = family.reduce(function(accumulator, nextValue) {
+    return accumulator += " " + nextValue;
+}, "My family members are");
+
+console.log("Reduce Function 3: " + nameFunction);
+
+// Object Reduction
+
+let familyMembers = [
+    {first: 'Abigail', age: 24},
+    {first: 'William', age: 21},
+    {first: 'Richie', age: 11}
+];
+
+function extractValue(arr, key) {
+    return familyMembers.reduce(function(accumulator, nextValue) {
+        accumulator.push(nextValue[key]);
+        return accumulator;
+    }, [])
+}
+
+console.log("First Name Array: " + extractValue(familyMembers, "first"));
+
+// Short/Long family names
+// Using family array
+
+function nameLength(value) {
+    return value.length > 4;
+}
+
+function partition(arr, callback) {
+    return arr.reduce(function(accumulator, nextValue) {
+        if(callback(nextValue)) {
+            accumulator[0].push(nextValue);
+        } else {
+            accumulator[1].push(nextValue);
+        }
+        return accumulator;
+    }, [[], []])
+}
+
+console.log(partition(family, nameLength));
