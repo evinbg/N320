@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+    <title>Vue Basics</title>
+</head>
+<body>
+    <h1>N320 Course Goals</h1>
+    <p>{{courseGoal1}}</p>
+    <section id="myGoals">
+        <p>{{courseGoal1}}</p>
+        <p>{{courseGoal2}}</p>
+        <p><a v-bind:href="vueLink">Vue</a> Resource</p>
+        <p>My Goal: {{newGoal()}}</p>
+        <p v-html="courseGoal3"></p>
+
+        <button v-on:click='addMore(5)'>Add</button>
+        <button v-on:click='counter--'>Remove</button>
+        <p>Count: {{counter}}</p>
+    </section>
+</body>
+</html>
