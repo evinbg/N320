@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
-    <script src="Vue2.js" defer></script>
+    <script src="Vue2_Student.js" defer></script>
     <title>Vue Loops</title>
 </head>
 <style>
@@ -68,8 +68,8 @@ form {
         </style>
 <body>
     <div id="moreVue">
-        <button @click="consoleNote">Console Note</button>
-        <form submit.prevent>
+        <button>Console Note</button>
+        <form>
             <label for="firstName">First Name</label>
             <input type="text" id="name" v-model="fname"/><br/>
             <label for="lastName">Last Name</label>
@@ -94,31 +94,43 @@ form {
         <div class="overview">
             <h1>Overview</h1>
             <ul>
-                <li><b>Name:</b></li>
+                <li><b>Name:</b>{{fullName}}</li>
                 <li><b>Name Length:</b></li>
                 <li><b>Middle Letter:</b></li>
-                <li><b>Preference:</b> <br/>
-                <p><i>Replace this text will preference text.</i></p></li>
+                <li><b>Preference:</b>{{preference}} <br/>
+                    <p v-show="preference">You have picked your preferred language.</p>
+                <p><i>{{prefText}}</i></p></li>
                 
-                <li><b>Preferred Music: </b></li>
-                <li><b>Preferred Music List: </b></li>
+                <li><b>Preferred Music: </b>{{music}}</li>
+                <li><b>Preferred Music List: </b>
+                    <ul>
+                        <li v-for="genre in music">{{genre}}</li>
+                    </ul>
+                </li>
             </ul>
         </div>
                 
            <div v-for="lang in languages" v-bind:key="lang.id">
             <!-- Access all languages-->
-                <section v-if="lang.dateRelease>2010">
+                <section v-if="lang.dateRelease > 2010">
                  <!-- Display all languages that were released after 2010 -->   
-                <h1>Replace will language name</h1>
+                <h1>{{lang.name}}</h1>
             <ul>
-                <li>Current Version: </li>
-                <li>Created by </li>
-                <li>First released in </li>
+                <li>Current Version: {{lang.version}}</li>
+                <li>Created by {{lang.creator}}</li>
+                <li>First released in {{lang.dateRelease}}</li>
                 <!-- If language is a javascript framework, print the next list item. -->
-                <li>"Language Name" is a Javascript framework</li>
+                <li v-if="lang.framework">{{lang.name}} is a Javascript framework</li>
         
             </ul></section>
            </div>
+           <!-- <div>
+            <h1>Tiggering Methods</h1>
+            <ul>
+                <li>
+                <button>Trigger{{ index.name }}</button></li>
+            </ul>
+           </div> -->
     
     </div>
 </body>

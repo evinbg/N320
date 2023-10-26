@@ -35,6 +35,22 @@ const vm = Vue.createApp({
             ]
         }
     },
+    computed: {
+        fullName() {
+            if (this.fname == '' || this.lname == '') {
+                return '';
+            } else {
+                return this.fname + ' ' + this.lname;
+            }
+        }
+    },
+    watch: { // watcher has to have the same name as the property they are watching
+        preference(newVal, oldVal) {
+            if (oldVal != '') {
+                this.prefText = `Preference has changed from ${oldVal} to ${newVal}`;
+            }
+        }
+    }
 
     
 })
