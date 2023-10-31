@@ -16,4 +16,32 @@ const app = Vue.createApp({
     }
 });
 
+app.component('greeting-input', {
+    template: `
+        <input type="text" v-model="Input">
+        <p>{{Input}}</p>
+
+        <input type="text" 
+        v-on:blur="displayText" 
+        ref="disRef">
+        <p>{{refText}}</p>`,
+    data() {
+        return {
+            Input: '',
+            refText: ''
+        }
+    },
+    watch: {
+        Input(newValue, oldValue) {
+            console.log(`Old Value: ${oldValue}`);
+            console.log(`New Value: ${newValue}`);
+        }
+    },
+    methods: {
+        displayText() {
+            this.refText = this.$refs.disRef.value;
+        }
+    }
+});
+
 app.mount('#vue');
