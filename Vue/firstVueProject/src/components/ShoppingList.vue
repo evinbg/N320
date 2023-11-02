@@ -14,9 +14,9 @@
         {{item}}</li>
       </ul>
     </div>
-  </template>
+</template>
   
-  <script>
+<script>
   export default {
     data() {
       return {
@@ -35,6 +35,10 @@
         }
     }
   }
-  </script>
+</script>
   
-  <style></style>
+<style scoped>
+h2 {
+    color: red;
+}
+</style>
