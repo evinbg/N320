@@ -36,7 +36,7 @@ app.component('my-list', {
     <button 
     v-on:click='Array_Counter = (Array_Counter + 1) % Color_Array.length'>
     Favorite Color</button>
-    <p v-if="Array_Counter > -1">{{Color_Array[Array_Counter].name}}</p>
+    <p v-if="Array_Counter > -1">My favorite color is {{Color_Array[Array_Counter].name}}!</p>
 
     <br/><br/>
     <label for="input">New Color: </label>
