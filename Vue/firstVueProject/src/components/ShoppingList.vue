@@ -11,8 +11,12 @@
       <ul>
         <li v-for="(item, i) in shoppingList"
         :key="i">
-        {{item}}</li>
+        {{item}}
+        <button @click="deleteItem(i)">Delete</button>
+        <button @click="editItem(i)">Edit</button>
+        </li>
       </ul>
+      <button @click="deleteItem(-1)">Delete All</button>
     </div>
 </template>
   
@@ -32,6 +36,17 @@
             }
             this.$refs.inputValue.focus();
             console.log(this.shoppingList);
+        },
+        deleteItem(i) {
+            this.shoppingList = (i + 1) ? this.shoppingList.filter((item, x) => x !== i) : [];
+        },
+        editItem(i) {
+            this.shoppingList.forEach((item, k) => {
+                if (i === k) {
+                    let newValue = prompt(`Current Value: ${item}`);
+                    this.shoppingList[k] = newValue;
+                }
+            });
         }
     }
   }
