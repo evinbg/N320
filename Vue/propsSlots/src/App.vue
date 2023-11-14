@@ -19,6 +19,20 @@
   :graduate="student.graduate"
   ></student-data>
 </div>
+<div>
+  <slot-one>
+    <!-- <h2>This is from App.vue</h2> -->
+    <template v-slot:greetingthing>{{ greeting }}</template>
+    <template #person></template>
+  </slot-one>
+</div>
+<div>
+  <slot-two>
+    <ul v-if="pastStudents.length != 0">
+      <li v-for="s in pastStudents" :key="s.sName">{{ s.sName }}</li>
+    </ul>
+  </slot-two>
+</div>
 </template>
 
 <script>
@@ -46,7 +60,8 @@ export default {
           major: "Informatics",
           graduate: true
         }
-      ]
+      ],
+      pastStudents: []
     }
   }
 }
