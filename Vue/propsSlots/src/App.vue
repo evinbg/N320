@@ -1,13 +1,14 @@
 <template>
 <h1>Props and Slots</h1>
-<div>
+<!-- <div>
   <props-one 
   v-bind:greeting="greeting"
   :who="who"
   :myVue="myVue"
   msg="Props are awesome!"></props-one>
   <props-two v-bind="book"></props-two>
-</div>
+</div> -->
+<add-student @add-student="addStudent"></add-student>
 <div>
   <h1>Student Data</h1>
   <student-data 
@@ -16,12 +17,14 @@
   :sAge="student.sAge" 
   :major="student.major"
   :cLevel="student.cLevel"
-  :graduate="student.graduate"
+  :graduate="student.graduate" 
+  :isEnrolled="student.isEnrolled" 
+  @toggle-enrollment="toggleEnrollment(student.sName)"
   ></student-data>
 </div>
-<div>
+<!-- <div>
   <slot-one>
-    <!-- <h2>This is from App.vue</h2> -->
+    <h2>This is from App.vue</h2>
     <template v-slot:greetingthing>{{ greeting }}</template>
     <template #person></template>
   </slot-one>
@@ -32,7 +35,7 @@
       <li v-for="s in pastStudents" :key="s.sName">{{ s.sName }}</li>
     </ul>
   </slot-two>
-</div>
+</div> -->
 </template>
 
 <script>
@@ -53,15 +56,42 @@ export default {
           sAge: 22,
           major: "Web Development",
           cLevel: 3,
+          isEnrolled: true
         },
         {
           sName: 'Susan Rutherford',
           sAge: 25,
           major: "Informatics",
-          graduate: true
+          graduate: true,
+          isEnrolled: false
         }
       ],
       pastStudents: []
+    }
+  },
+  methods: {
+    addStudent(name, age, major, cLevel, graduate) {
+      cLevel = parseInt(cLevel);
+      // if (graduate == 'true') {
+      //   graduate = true;
+      // } else {
+      //   graduate = false;
+      // }
+      const newStudent = {
+        sName: name,
+        sAge: age,
+        major: major,
+        cLevel: cLevel,
+        graduate: graduate
+      }
+      console.log(newStudent);
+      this.students.push(newStudent);
+    },
+    toggleEnrollment(value) {
+      console.log(value);
+      const currentStudent = this.students.find(
+        (s) => s.sName === value);
+      currentStudent.isEnrolled = !currentStudent.isEnrolled;
     }
   }
 }

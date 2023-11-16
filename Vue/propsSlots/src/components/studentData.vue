@@ -1,7 +1,9 @@
 <template>
 <div>
     <h2>{{ sName }}</h2>
+    <p>{{ isEnrolled }}</p>
     <button @click="toggleDetails">{{ visibleData ? "Hide" : "Show" }} Details</button>
+    <button @click="toggleEnrollment(sName)">Toggle Enrollment</button>
     <div v-if="visibleData">
         <h2>Student Details</h2>
         <p>Age: {{ sAge }}</p>
@@ -33,11 +35,15 @@ export default {
                 return (value > 0 && value <= 4);
             }
         },
-        graduate: Boolean
+        graduate: Boolean,
+        isEnrolled: Boolean
     },
     methods: {
         toggleDetails() {
             this.visibleData = !this.visibleData;
+        },
+        toggleEnrollment(value) {
+            this.$emit('toggle-enrollment', value);
         }
     }
 }
