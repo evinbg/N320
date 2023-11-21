@@ -5,6 +5,7 @@ import SlotOne from './components/slotOne.vue';
 import CustomButton from './components/customButton.vue';
 import SlotTwo from './components/slotTwo.vue';
 import AddStudent from './components/addStudent.vue';
+import router from './router/index.js';
 
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -17,4 +18,6 @@ app.component('slot-one', SlotOne);
 app.component('custom-button', CustomButton);
 app.component('slot-two', SlotTwo);
 app.component('add-student', AddStudent);
+
+app.use(router);
 app.mount('#app');
