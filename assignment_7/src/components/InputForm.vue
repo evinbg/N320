@@ -43,11 +43,14 @@ export default {
 
 <style scoped>
 .container {
-    margin: 10px;
+    margin: 5px;
     background-color: aquamarine;
     border-radius: 10px;
     padding: 10px;
     width: 400px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }
 
 .radios {
@@ -60,5 +63,11 @@ label {
 
 p {
     margin: 5px;
+}
+
+#teamName {
+    border-radius: 2px;
+    border-color: black;
+    border-style: solid;
 }
 </style>

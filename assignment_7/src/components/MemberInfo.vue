@@ -1,7 +1,9 @@
 <template>
 <div>
     <div class="container" v-if="role === displayRole">
-        <slot-button>Join {{ teamName }}</slot-button>
+        <slot-button 
+        v-if="team === ''"
+        @click="joinTeam(id, teamName)">Join {{ teamName }}</slot-button>
         <p>
             <slot name="mName"></slot>
         </p>
@@ -10,6 +12,9 @@
         </p>
         <slot-button @click="toggleDetails">{{ visibleData ? "Hide" : "Show" }} Details</slot-button>
         <div class="info" v-if="visibleData">
+            <p>
+                <slot name="mId"></slot>
+            </p>
             <p>
                 <slot name="mPhone"></slot>
             </p>
@@ -28,13 +33,17 @@
 export default {
     data() {
         return {
-            visibleData: false
+            visibleData: false,
+
         }
     },
-    props: ['role', 'displayRole', 'teamName'],
+    props: ['role', 'team', 'displayRole', 'teamName', 'id'],
     methods: {
         toggleDetails() {
             this.visibleData = !this.visibleData;
+        },
+        joinTeam(id, teamName) {
+            this.$emit('join-team', id, teamName);
         }
     }
 }
@@ -43,11 +52,14 @@ export default {
 <style scoped>
 .container {
     margin: 10px;
-    background-color: lightgray;
+    background-color: lightcoral;
     padding: 10px;
     width: 400px;
     height: auto;
     border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }
 
 p {

@@ -9,7 +9,8 @@ import FilteredList from '../components/FilteredList.vue'
   <FilteredList
   :members="members"
   :teamName="teamName"
-  :displayRole="displayRole"/>
+  :displayRole="displayRole"
+  @join-team="joinTeam"/>
 </main>
 </template>
 
@@ -26,7 +27,11 @@ export default {
     displayMembers(name, role) {
       this.teamName = name;
       this.displayRole = role;
+    },
+    joinTeam(id, team) {
+      this.$emit('join-team', id, team);
     }
+
   }
 }
 </script>
