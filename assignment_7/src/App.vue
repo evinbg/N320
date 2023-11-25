@@ -7,7 +7,7 @@
 export default {
   data() {
     return {
-      TeamsList: [], // TeamsList Structure: [ ['team name 1', member1.id, member2.id, ...],  ['team name 2', member3.id, member4.id, ...], ...]
+      TeamsList: [], // TeamsList Structure: [ {name: 'team name 1', members: [member1.id, member2.id, ...] },  {name: 'team name 2', members: [member3.id, member4.id, ...] }, ...]
       members: [
         {
         id: 1,
@@ -121,15 +121,20 @@ export default {
 
       let flag = false; // flag to determine if a team already exists within the TeamsList array with the same team name as the input
       for (let j = 0; j < (this.TeamsList).length; j++) { // loops through TeamsList to find a team name that is the same as the input
-        if (this.TeamsList[j][0] === teamName) { // if a team already exists with the name
-          this.TeamsList[j].push(memberFound.id); // add the member id to the team array
+        if (this.TeamsList[j].name === teamName) { // if a team already exists with the name
+          (this.TeamsList[j].members).push(memberFound.id); // add the member id to the team array
           flag = true; // flag that a team was found
+          console.log(this.TeamsList[j]);
           break;
         }
       }
       if (flag === false) { // if a team was not found
-        let newTeam = [teamName, memberFound.id]; // create a new array with the 0th index being the team name in the input
+        let newTeam = {
+          name: teamName,
+          members: [memberFound.id]
+        }; // create a new object for a team
         this.TeamsList.push(newTeam); // add this new team to the TeamsList array
+        console.log(this.TeamsList);
       }
     }
   }
