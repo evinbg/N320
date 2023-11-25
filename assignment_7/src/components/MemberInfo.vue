@@ -54,7 +54,7 @@ export default {
     margin: 10px;
     background-color: lightcoral;
     padding: 10px;
-    width: 400px;
+    width: 365px;
     height: auto;
     border-radius: 10px;
     border-style: solid;

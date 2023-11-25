@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .container {
     background-color: lightgray;
-    width: auto;
+    width: 410px;
     padding: 5px;
     display: inline-block;
     margin: 5px;
