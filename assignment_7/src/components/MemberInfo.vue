@@ -24,6 +24,9 @@
             <p>
                 <slot name="mTeam"></slot>
             </p>
+            <p>
+                <slot name="mNoTeam"></slot>
+            </p>
         </div>
     </div>
 </div>
