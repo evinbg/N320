@@ -13,6 +13,7 @@
         <template #mPhone>Phone: {{ member.phone }}</template>
         <template #mEmail>Email: {{ member.email }}</template>
         <template #mTeam v-if="member.team !== ''">Team: {{ member.team }}</template>
+        <template #mNoTeam v-if="member.team === ''">No Team</template>
     </member-info>
 </div>
 </template>

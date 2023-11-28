@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container" v-if="TeamsList.length > 0">
     <team-info v-for="team in TeamsList" :key="team.name"
     :team="team">
     </team-info>
