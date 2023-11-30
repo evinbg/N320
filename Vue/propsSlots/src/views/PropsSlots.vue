@@ -25,10 +25,18 @@
     </ul>
   </slot-two> -->
 </div>
+<div>
+  <project-data></project-data>
+</div>
 </template>
 
 <script>
+import ProjectData from '../components/projectData.vue';
+
 export default {
-    props: ['greeting', 'who', 'count', 'book', 'myVue']
+  components: {
+    ProjectData
+  },
+  props: ['greeting', 'who', 'count', 'book', 'myVue']
 }
 </script>
