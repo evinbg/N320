@@ -1,13 +1,12 @@
 <template>
 <div v-if="tags.includes(filter) || filter == '' || presenter == filter">
     <h3>{{ id }}</h3>
-    <session-button @click="addItem(added, id)">{{ added ? "Item Added" : "Add Item" }}</session-button>
+    <session-button @click="addItem(added, id)">{{ added ? "Session Added" : "Add Session" }}</session-button>
     <p>{{ title }}</p>
-    <p>{{ desc }}</p>
     <p class="presenter"
     @click="filterPresenter(presenter)">{{ presenter }}</p>
-    <p>{{ sTime }}</p>
-    <p>{{ sDay }}</p>
+    <p>{{ formatDateAndTime(sDay, sTime) }}</p>
+    <p>{{ desc }}</p>
     <session-button v-for="tag in tags"
     @click="filterTag(tag)">{{ tag }}</session-button>
 </div>
@@ -77,6 +76,20 @@ export default {
             if (added == false) {
                 this.$emit('add-item', id);
             }
+        },
+        formatDateAndTime(sDay, sTime) {
+            let time = '';
+
+            if (sTime > 12) {
+                time = `${sTime - 12}:00pm`;
+            } else if (sTime == 12) {
+                time = `${sTime}:00pm`;
+            } else if (sTime == 24) {
+                time = `${sTime}:00am`;
+            } else {
+                time = `${sTime}:00am`;
+            }
+            return (sDay + ' at ' + time);
         }
     }
 }

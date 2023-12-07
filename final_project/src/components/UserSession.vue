@@ -1,7 +1,7 @@
 <template>
 <div>
     <h2>{{ title }}</h2>
-    <h3>{{ presenter }}</h3>
+    <h3>{{ formatDateAndTime(sDay, sTime) }}</h3>
     <session-button @click="removeSession(id)">Remove Session</session-button>
 </div>
 </template>
@@ -47,6 +47,20 @@ export default {
     methods: {
         removeSession(id) {
             this.$emit('remove-session', id);
+        },
+        formatDateAndTime(sDay, sTime) {
+            let time = '';
+
+            if (sTime > 12) {
+                time = `${sTime - 12}:00pm`;
+            } else if (sTime == 12) {
+                time = `${sTime}:00pm`;
+            } else if (sTime == 24) {
+                time = `${sTime}:00am`;
+            } else {
+                time = `${sTime}:00am`;
+            }
+            return (sDay + ' at ' + time);
         }
     }
 }
