@@ -84,8 +84,8 @@ export default {
             this.filterType = 'presenter';
             this.filter = presenter;
         },
-        addItem(id) {
-            this.$emit('add-item', id);
+        addItem(added, id) {
+            this.$emit('add-item', added, id);
         }
     },
     inheritAttrs: false

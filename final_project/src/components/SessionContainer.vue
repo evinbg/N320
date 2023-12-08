@@ -90,9 +90,7 @@ export default {
             this.$emit('filter-presenter', presenter);
         },
         addItem(added, id) {
-            if (added == false) {
-                this.$emit('add-item', id);
-            }
+            this.$emit('add-item', added, id);
         },
         formatDateAndTime(sDay, sTime) {
             let time = '';

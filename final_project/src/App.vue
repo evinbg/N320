@@ -127,12 +127,16 @@ export default {
     }
   },
   methods: {
-    addItem(id) {
-      for (let i = 0; i < this.sessions.length; i++) {
-        if (this.sessions[i].id == id) {
-          this.sessions[i].added = true;
-          this.userSessions.push(this.sessions[i]);
+    addItem(added, id) {
+      if (added == false) {
+        for (let i = 0; i < this.sessions.length; i++) {
+          if (this.sessions[i].id == id) {
+            this.sessions[i].added = true;
+            this.userSessions.push(this.sessions[i]);
+          }
         }
+      } else {
+          this.removeSession(id);
       }
     },
     removeSession(id) {
