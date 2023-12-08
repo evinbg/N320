@@ -138,11 +138,12 @@ export default {
     display: flex;
     flex-wrap: wrap;
     background-color: white;
-    margin: 20px;
+    margin: 40px;
     color: black;
     border-radius: 2px;
     border-style: solid;
     border-radius: 20px;
+    box-shadow: 8px 8px 12px 0px #444444;
 }
 
 .row1 {

@@ -58,6 +58,7 @@ header {
     background-color: var(--pink);
     display: flex;
     box-shadow: 0px 6px var(--blue);
+    white-space: nowrap;
 }
 
 nav {

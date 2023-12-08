@@ -100,12 +100,14 @@ main {
 h1 {
     font-weight: normal;
     color: var(--pink);
-    padding: 20px;
-    padding-top: 40px;
+    padding: 40px;
+    padding-bottom: 0;
 }
 
 .row {
-    margin: 20px;
+    margin: 40px;
+    margin-top: 20px;
+    margin-bottom: 0px;
     display: flex;
     height: 35px;
 }

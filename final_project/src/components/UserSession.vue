@@ -1,8 +1,11 @@
 <template>
-<div>
-    <h2>{{ title }}</h2>
+<div class="session">
+    <div class="row">
+        <h2>{{ title }}</h2>
+        <session-button @click="removeSession(id)" class="remove">Remove Session</session-button>
+    </div>
     <h3>{{ formatDateAndTime(sDay, sTime) }}</h3>
-    <session-button @click="removeSession(id)">Remove Session</session-button>
+    <hr class="line">
 </div>
 </template>
 
@@ -67,5 +70,33 @@ export default {
 </script>
 
 <style scoped>
+.session {
+    margin: 20px;
+    width: 100%;
+}
 
+h2 {
+    color: var(--blue);
+}
+
+h3 {
+    margin-top: 10px;
+}
+
+.line {
+    margin: 20px;
+    margin-left: 0px;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+
+.remove {
+    margin-left: auto;
+    min-width: 130px;
+}
 </style>
