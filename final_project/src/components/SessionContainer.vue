@@ -1,14 +1,31 @@
 <template>
-<div v-if="tags.includes(filter) || filter == '' || presenter == filter">
-    <h3>{{ id }}</h3>
-    <session-button @click="addItem(added, id)">{{ added ? "Session Added" : "Add Session" }}</session-button>
-    <p>{{ title }}</p>
-    <p class="presenter"
-    @click="filterPresenter(presenter)">{{ presenter }}</p>
-    <p>{{ formatDateAndTime(sDay, sTime) }}</p>
-    <p>{{ desc }}</p>
-    <session-button v-for="tag in tags"
-    @click="filterTag(tag)">{{ tag }}</session-button>
+<div v-if="tags.includes(filter) || filter == '' || presenter == filter"
+class="container">
+    <div class="row1">
+        <h3 class="title">{{ title }}</h3>
+
+        <session-button @click="addItem(added, id)"
+        class="add">{{ added ? "Session Added" : "Add Session" }}</session-button>
+    </div>
+
+    <div class="row2">
+        <p class="presented">Presented by: 
+            <b class="presenter"
+            @click="filterPresenter(presenter)"> {{ presenter }}</b>
+        </p>
+
+        <p class="date">{{ formatDateAndTime(sDay, sTime) }}</p>
+    </div>
+
+    <hr class="line">
+
+    <p class="desc">{{ desc }}</p>
+
+    <div class="tags">Categories: 
+        <session-button v-for="tag in tags"
+        @click="filterTag(tag)"
+        class="tag">{{ tag }}</session-button>
+    </div>
 </div>
 </template>
 
@@ -96,11 +113,85 @@ export default {
 </script>
 
 <style scoped>
+* {
+    font-size: 18px;
+}
+
+.line {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+}
+
+.presented {
+    margin: 10px;
+}
 .presenter {
-    color: red;
+    color: var(--pink);
 }
 
 .presenter:hover {
     cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    margin: 20px;
+    color: black;
+    border-radius: 2px;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+.row1 {
+    display: flex;
+    height: auto;
+    width: 100%;
+}
+
+.title {
+    margin: 20px;
+    color: var(--blue);
+    float: left;
+    width: auto;
+    font-size: 24px;
+}
+
+.add {
+    margin: 20px;
+    margin-left: auto;
+    min-width: 120px;
+}
+
+.row2 {
+    display: flex;
+    height: 2em;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.presented {
+    margin: 0;
+    width: auto;
+}
+.date {
+    margin-left: auto;
+    width: auto;
+}
+
+.desc {
+    margin: 20px;
+    margin-bottom: 0;
+}
+
+.tags {
+    margin: 20px;
+}
+
+.tag {
+    margin-left: 10px;
 }
 </style>

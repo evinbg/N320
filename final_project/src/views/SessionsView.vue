@@ -1,26 +1,29 @@
 <template>
-<h1>Sessions</h1>
-<h2>{{ updateCount }}</h2>
-<session-button v-if="showClear == true"
-@click="clearFilter">Clear Filter</session-button>
-<session-container v-for="session in sessions"
-:id="session.id"
-:title="session.title"
-:desc="session.desc"
-:presenter="session.presenter"
-:tags="session.tags"
-:sTime="session.sTime"
-:sDay="session.sDay"
-:added="session.added"
-:filter="this.filter"
-@filter-tag="filterTag"
-@filter-presenter="filterPresenter"
-@add-item="addItem"></session-container>
+<main>
+    <h1>Conference Session Information</h1>
+    <div class="row">
+        <h2>{{ updateCount }}</h2>
+        <session-button v-if="showClear == true"
+        @click="clearFilter"
+        class="clear">Clear Filter</session-button>
+    </div>
+    <session-container v-for="session in sessions"
+    :id="session.id"
+    :title="session.title"
+    :desc="session.desc"
+    :presenter="session.presenter"
+    :tags="session.tags"
+    :sTime="session.sTime"
+    :sDay="session.sDay"
+    :added="session.added"
+    :filter="this.filter"
+    @filter-tag="filterTag"
+    @filter-presenter="filterPresenter"
+    @add-item="addItem"></session-container>
+</main>
 </template>
 
 <script>
-//import SessionContainer from '../components/SessionContainer.vue';
-
 export default {
     data() {
         return {
@@ -31,11 +34,10 @@ export default {
         }
     },
     inject: ['sessions'],
-    // props: ['sessions'],
     computed: {
         updateCount() {
             if (this.filter == '') {
-                return `${this.sessions.length} Sessions`;
+                return `${this.sessions.length} Sessions:`;
             }
             this.sessionCount = 0;
 
@@ -57,7 +59,7 @@ export default {
                     }
                 }
 
-            return `${this.sessionCount} of ${this.sessions.length} Sessions`;
+            return `${this.sessionCount} of ${this.sessions.length} Sessions:`;
         }
     },
     watch: {
@@ -89,3 +91,30 @@ export default {
     inheritAttrs: false
 }
 </script>
+
+<style scoped>
+main {
+    margin-top: 100px;
+}
+
+h1 {
+    font-weight: normal;
+    color: var(--pink);
+    padding: 20px;
+    padding-top: 40px;
+}
+
+.row {
+    margin: 20px;
+    display: flex;
+    height: 35px;
+}
+
+.clear {
+    margin-left: auto;
+    background-color: var(--pink);
+    color: white;
+    font-size: 18px;
+}
+
+</style>

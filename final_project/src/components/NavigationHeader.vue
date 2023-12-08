@@ -1,52 +1,74 @@
 <template>
 <header>
+    <h1>Web Developer Conference</h1>
     <nav>
-        <RouterLink to="/" class="page">Sessions</RouterLink>
-        <RouterLink to="/mySessions" class="page">My Sessions</RouterLink>
+        <RouterLink to="/" class="page"><b>Sessions</b></RouterLink>
+        <RouterLink to="/mySessions" class="page"><b>My Sessions</b></RouterLink>
     </nav>
 </header>
 </template>
 
 <style scoped>
+* {
+    font-size: 24px;
+}
+
+h1 {
+    display: flex;
+    font-size: 38px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 40px;
+    color: white;
+}
+
 .page {
     width: auto;
-    background-color: lightcyan;
-    padding: 5px;
+    height: 2.5em;
+    padding: 0.4em;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--teal);
+    color: black;
+    opacity: 100%;
     border-radius: 10px;
-    margin: 5px;
-    margin-right: 10px;
     border-width: 2px;
     border-color: black;
     border-style: solid;
+    transition: 0.2s ease-in-out;
     text-decoration: none;
-    box-shadow: 2px 2px 2px 2px rgba(0,0,0,.5);
+    margin: 20px;
 }
 
 .page:visited {
     text-decoration: none;
-    color: black;
 }
 
 .page:hover {
+    background-color: var(--yellow);
+    color: black;
     cursor: pointer;
 }
 
 header {
-    margin-bottom: 15px;
-    margin-top: 15px;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    background-color: var(--pink);
+    display: flex;
+    box-shadow: 0px 6px var(--blue);
 }
 
 nav {
+    margin: auto;
+    margin-right: 40px;
+    margin-left: auto;
     text-decoration: none;
 }
 
 .router-link-active {
-  background-color: darkblue;
-  color: white;
-}
-
-.router-link-active:visited {
-  background-color: darkblue;
+  background-color: var(--blue);
   color: white;
 }
 </style>
